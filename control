@@ -1,0 +1,9 @@
+Package: com.insanj.editclocks
+Name: Edit Clocks
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Swipe to delete clocks.
+Maintainer: Julian Weiss <me@insanj.com>
+Author: Julian (insanj) Weiss
+Section: Tweaks
