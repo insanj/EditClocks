@@ -1,0 +1,10 @@
+{
+	entry = {
+		bundle = EditClocksPrefs;
+		cell = PSLinkCell;
+		detail = "EditClocksPrefsListController";
+		icon = "EditClocksPrefs.png";
+		isController = 1;
+		label = EditClocksPrefs;
+	};
+}
