@@ -1,4 +1,14 @@
+#include <CoreFoundation/CoreFoundation.h>
 #import <UIKit/UIKit.h>
+
+#define PLIST_PATH @"/User/Library/Preferences/com.insanj.editclocks.plist"
+
+BOOL enabled = FALSE;
+
+void settingsUpdated(CFNotificationCenterRef center, void * observer, CFStringRef name, const void * object, CFDictionaryRef userInfo) {
+    
+    enabled = [[[NSDictionary dictionaryWithContentsOfFile:PLIST_PATH] valueForKey:@"kEnabled"] boolValue];
+}
 
 @interface TableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @end
@@ -9,15 +19,23 @@
 %hook WorldClockViewController
 
 -(UIBarButtonItem *)editButtonItem{
-    return nil;
+    return enabled ? nil : %orig;
 }
 
 -(BOOL)tableView:(UITableView *)arg1 canEditRowAtIndexPath:(NSIndexPath *)arg2{
-	return YES;
+	return enabled ? YES : %orig;
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleDelete;
+    return enabled ? UITableViewCellEditingStyleDelete : %orig;
 }
 
 %end
+
+%ctor {
+
+settingsUpdated(NULL,NULL,NULL,NULL,NULL); //get the value for the first time
+
+CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, settingsUpdated,CFSTR("com.insanj.editclocks.settingsupdated"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+
+}
