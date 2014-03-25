@@ -2,6 +2,8 @@ Edit Clocks
 =======================
 
 Swipe to delete clocks.
+Put the 'EditClocksPrefs.plist' in /Library/PreferencesLoader/Preferences to load it. Tweak will only be active when you enabled the Switch in the Preferences Entry.
+When you change the Switch state (on ->off | off ->on) the Tweak will automatically update its functionality depending on the Switch state.
 
 ---------------------------------------
 	Simplified BSD License
