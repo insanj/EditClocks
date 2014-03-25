@@ -3,7 +3,7 @@
 
 #define PLIST_PATH @"/User/Library/Preferences/com.insanj.editclocks.plist"
 
-BOOL enabled = FALSE;
+BOOL enabled = TRUE;
 
 void settingsUpdated(CFNotificationCenterRef center, void * observer, CFStringRef name, const void * object, CFDictionaryRef userInfo) {
     
@@ -33,8 +33,6 @@ void settingsUpdated(CFNotificationCenterRef center, void * observer, CFStringRe
 %end
 
 %ctor {
-
-settingsUpdated(NULL,NULL,NULL,NULL,NULL); //get the value for the first time
 
 CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, settingsUpdated,CFSTR("com.insanj.editclocks.settingsupdated"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
 

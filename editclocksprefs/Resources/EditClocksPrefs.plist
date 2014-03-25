@@ -16,7 +16,7 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.insanj.editclocks</string>
+			<string>com.insanj.editclockprefs</string>
 			<key>key</key>
 			<string>kEnabled</string>
 			<key>label</key>
@@ -24,6 +24,6 @@
 		</dict>
 	</array>
 	<key>title</key>
-	<string>EditClocks</string>
+	<string>EditClocksPrefs</string>
 </dict>
 </plist>
